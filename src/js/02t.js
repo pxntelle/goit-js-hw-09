@@ -43,14 +43,14 @@ function startCountdown() {
   let timeRemaining = selectedDate - currentDate;
 
   countdownIntervalId = setInterval(() => {
-    updateTimerUI(timeRemaining);
     timeRemaining -= 1000;
-
     if (timeRemaining < 0) {
       clearInterval(countdownIntervalId);
       startBtn.disabled = true;
-      return Notify.success('Countdown timer finished');
+      Notify.success('Countdown timer finished');
+      return;
     }
+    updateTimerUI(timeRemaining);
   }, 1000);
 }
 
@@ -75,3 +75,5 @@ function updateTimerUI(timeRemaining) {
   minutesEl.textContent = minutes;
   secondsEl.textContent = seconds;
 }
+
+
