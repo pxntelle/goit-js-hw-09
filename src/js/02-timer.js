@@ -53,3 +53,25 @@ function startCountdown() {
     }
   }, 1000);
 }
+
+function updateTimerUI(timeRemaining) {
+  const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24))
+    .toString()
+    .padStart(2, '0');
+  const hours = Math.floor(
+    (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  )
+    .toString()
+    .padStart(2, '0');
+  const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60))
+    .toString()
+    .padStart(2, '0');
+  const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000)
+    .toString()
+    .padStart(2, '0');
+
+  daysEl.textContent = days;
+  hoursEl.textContent = hours;
+  minutesEl.textContent = minutes;
+  secondsEl.textContent = seconds;
+}
