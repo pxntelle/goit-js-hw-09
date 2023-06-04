@@ -5,23 +5,44 @@ const body = document.querySelector('body');
 const COLOR_CHANGE_INTERVAL = 1000;
 let intervalId = null;
 
-startBtn.disabled = false;
-stopBtn.disabled = true;
+// startBtn.disabled = false;
+// stopBtn.disabled = true;
+
+// startBtn.addEventListener('click', startColorSwitch);
+// stopBtn.addEventListener('click', stopColorSwitch);
+
+// function startColorSwitch() {
+//   startBtn.disabled = true;
+//   stopBtn.disabled = false;
+//   changeBackgroundColor();
+//   intervalId = setInterval(changeBackgroundColor, COLOR_CHANGE_INTERVAL);
+// }
+
+// function stopColorSwitch() {
+//   startBtn.disabled = false;
+//   stopBtn.disabled = true;
+//   clearInterval(intervalId);
+// }
+
+updateButtonState(false);
 
 startBtn.addEventListener('click', startColorSwitch);
 stopBtn.addEventListener('click', stopColorSwitch);
 
 function startColorSwitch() {
-  startBtn.disabled = true;
-  stopBtn.disabled = false;
+  updateButtonState(true);
   changeBackgroundColor();
   intervalId = setInterval(changeBackgroundColor, COLOR_CHANGE_INTERVAL);
 }
 
 function stopColorSwitch() {
-  startBtn.disabled = false;
-  stopBtn.disabled = true;
+  updateButtonState(false);
   clearInterval(intervalId);
+}
+
+function updateButtonState(startEnabled) {
+  startBtn.disabled = startEnabled;
+  stopBtn.disabled = !startEnabled;
 }
 
 function changeBackgroundColor() {
